@@ -1,0 +1,19 @@
+<workflow-app name="hivequeryworflow" xmlns="uri:oozie:workflow:0.4">
+  <global>
+      <job-xml>/user/hue/oozie/workspaces/_hue_-oozie-1-1460921992.53/workflow.xml</job-xml>
+  </global>
+    <start to="hivequery"/>
+    <action name="hivequery">
+        <hive xmlns="uri:oozie:hive-action:0.2">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <script>/user/hue/oozie/workspaces/_hue_-oozie-1-1460921992.53/hivequery.hql</script>
+        </hive>
+        <ok to="end"/>
+        <error to="kill"/>
+    </action>
+    <kill name="kill">
+        <message>Action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>
