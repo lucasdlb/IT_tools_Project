@@ -8,7 +8,7 @@ remark: needs python 3, and urllib3, pandas, ast, datetime os packages.
 
 The HiveQuery.hql file does the query requested in the project. Big queries should be read from the middle of the query to the begining.
 
-The HiveQuery.xml file is simply created by the oozie UI. 
+The HiveQuery.xml file is simply created by the hue's oozie UI. 
 
 
 
