@@ -19,3 +19,4 @@ cities_location['latidude'] = gps_location_latitude
 cities_location['longitude'] = gps_location_longitude
 
 cities_location.to_csv('cities_location.csv', sep = ',', index = False)
+ 
