@@ -7,6 +7,7 @@ import os
 
 
 http = urllib3.PoolManager()
+os.system('hadoop fs -get /tmp/projet_it/weather/cities_location.csv %s' % os.getcwd())
 cities_location = pd.read_csv('/data_projet_it_tools/cities_location.csv')
 print('import cities ok')
 columns = ["ozone","time_description"]
@@ -24,4 +25,5 @@ weather_data.to_csv(file_name, sep = ',', index = False)
 
 file_path = '%s/%s' % (os.getcwd(), file_name)
 print(file_path)
-os.system('hadoop fs -put %s /tmp/projet_it' % file_path)
+os.system('hadoop fs -put %s /tmp/projet_it/weather' % file_path)
+os.system('rm %s' % file_name)
