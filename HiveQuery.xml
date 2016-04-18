@@ -1,13 +1,21 @@
 <workflow-app name="hivequeryworflow" xmlns="uri:oozie:workflow:0.4">
   <global>
-      <job-xml>/user/hue/oozie/workspaces/_hue_-oozie-1-1460921992.53/workflow.xml</job-xml>
+      <job-xml>/user/hue/oozie/workspaces/_hue_-oozie-1-1460921992.53/hive-site.xml</job-xml>
   </global>
     <start to="hivequery"/>
     <action name="hivequery">
         <hive xmlns="uri:oozie:hive-action:0.2">
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
+              <job-xml>/user/hue/oozie/workspaces/_hue_-oozie-1-1460921992.53/hive-site.xml</job-xml>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>default</value>
+                </property>
+            </configuration>
             <script>/user/hue/oozie/workspaces/_hue_-oozie-1-1460921992.53/hivequery.hql</script>
+            <file>/user/hue/oozie/workspaces/_hue_-oozie-1-1460921992.53/hive-site.xml#hive-site.xml</file>
         </hive>
         <ok to="end"/>
         <error to="kill"/>
